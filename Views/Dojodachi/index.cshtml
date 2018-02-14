@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/css/index.css"/>
+</head>
+<body>
+<ul>
+    <li>Fullness:@ViewBag.fullness</li>
+    <li>Happiness:@ViewBag.Happiness</li>
+    <li>Meals:@ViewBag.meal</li>
+    <li>Energy:@ViewBag.energy</li>
+</ul>
+<div class="main">
+    
+   <p>@TempData["play"]</p>
+   <p>@TempData["lowenergy"]</p>
+   <p>@TempData["feed"]</p>
+   <p>@TempData["lowmeal"]</p>
+   <p>@TempData["work"]</p>
+   <p>@TempData["sleep"]</p>
+   <p>@TempData["lowhappiness"]</p>
+   <p>@TempData["won"]</p>
+   
+   
+</div>
+@{
+    if(TempData["lowhappiness"]=="Your Dojodachi is passed away...") 
+{
+    <form action="reset"><button>Restart</button></form>
+}
+}  
+
+@{ if(@TempData["won"]=="You won!")
+{
+    <form action="reset"><button>Restart</button></form>
+}
+}
+@{
+    if(TempData["lowhappiness"]!="Your Dojodachi is passed away..." && TempData["won"]!="You won!") {
+    <div class="button">
+       <form action="feed">
+           <button>Feed</button>
+           <!-- <input type="hidden"name="feed"> -->
+       </form>
+
+       <form action="play">
+           <button>Play</button>
+           <!-- <input type="hidden" name="play"> -->
+        </form>
+       <form action="work">
+           <button>Work</button>
+           <!-- <input type="hidden" name="work"> -->
+           </form>
+       <form action="sleep">
+           <button>Sleep</button>
+           <!-- <input type="hidden" name="sleep"> -->
+           </form>
+</div>
+    }
+}
+
+
+
+
+
+
+
+
+
+</body>
+</html>
